@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import DurationComponent from "../duration-component/duration-component";
-import TitleComponent from "../title-component/title-component";
-import GenreComponent from "../genre-component/genre-component";
+import DurationComponent from "./duration-sub-component/duration-component";
+import TitleComponent from "./title-sub-component/title-component";
+import GenreComponent from "./genre-sub-component/genre-component";
 
-class DetailsComponent extends Component {
+class DetailsContainer extends Component {
   constructor(props) {
     super(props);
 
@@ -25,4 +25,4 @@ class DetailsComponent extends Component {
   }
 }
 
-export default DetailsComponent;
+export default DetailsContainer;
