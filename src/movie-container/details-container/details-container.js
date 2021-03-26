@@ -16,10 +16,12 @@ class DetailsContainer extends Component {
 
   render() {
     return (
-      <div>
-        <DurationComponent duration={this.state.duration}/>
+      <div className="details">
         <TitleComponent title={this.state.title}/>
-        <GenreComponent genre={this.state.genre}/>
+        <div>
+          <DurationComponent duration={this.state.duration}/>          
+          <GenreComponent genre={this.state.genre}/>
+        </div>
       </div>
     )
   }

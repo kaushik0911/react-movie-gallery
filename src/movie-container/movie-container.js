@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import DetailsComponent from "./details-component/details-component";
-import ThumbnailComponent from "./thumbnail-component/thumbnail-component";
+import DetailsContainer from "./details-container/details-container";
+import ThumbnailContainer from "./thumbnail-container/thumbnail-container";
 
 class MovieContainer extends Component {
   render() {
     return (
       <div>
-        <DetailsComponent/>
-        <ThumbnailComponent/>
+        <ThumbnailContainer/>
+        <DetailsContainer/>
       </div>
     )
   }

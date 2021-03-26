@@ -1,4 +1,5 @@
 import MovieContainer from "./movie-container/movie-container";
+import "./App.css";
 
 function App() {
   return (
