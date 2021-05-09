@@ -1,11 +1,9 @@
-import MovieContainer from "./movie-container/movie-container";
+import LoginContainer from "./user-container/login-container";
 import "./App.css";
 
 function App() {
   return (
-    <div className="movie">
-      <MovieContainer/>
-    </div>
+    <LoginContainer/>
   );
 }
 
