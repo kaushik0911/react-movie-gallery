@@ -2,7 +2,7 @@
 
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://localhost:3005/api';
+axios.defaults.baseURL = 'https://rails-movie-gallery.herokuapp.com/api';
 
 export function login(email, password) {
   axios.post('/login', {

@@ -1,9 +1,9 @@
-// my login component
-
-import React, { Component } from 'react';
 import { login } from './session-apis';
 
+import React, { Component } from 'react';
 import MovieContainer from "../movie-container/movie-container";
+
+import {Button, Form, Modal} from 'react-bootstrap';
 
 
 class LoginContainer extends Component {
@@ -13,30 +13,43 @@ class LoginContainer extends Component {
     this.state = {
       email: '',
       password: '',
-      logged: false
+      logged: false,
+      show: false
     };
 
     this.onInputTypesChange = this.onInputTypesChange.bind(this);
+    this.handleClose        = this.handleClose.bind(this);
+    this.handleShow         = this.handleShow.bind(this);
   }
 
   onInputTypesChange = (event) => {
     this.setState({[event.target.name]: event.target.value});
-    console.log(this.state.email);
   }
 
-  onFormSubmit = (event) => {
+  onFormSubmit = async(event) => {
     event.preventDefault();
 
-    let email = this.state.email;
+    let email    = this.state.email;
     let password = this.state.password;
 
-    // not working here 
-    console.log(login(email, password))
-    if (login(email, password)) {
+    let response = await login(email, password);
+    alert(response);
+    if (response) {
+      alert('hiii');
       this.setState({logged: true});
+    } else {
+      alert('noo hiii');
+      this.handleShow();
     }
-    
   }
+  
+  handleClose = () => {
+    this.setState({show: false});
+  };
+  
+  handleShow = () => {
+    this.setState({show: true});
+  };
 
   render () {
     if (this.state.logged) {
@@ -44,17 +57,31 @@ class LoginContainer extends Component {
     } else {
       return (
         <div>
-          <form onSubmit={this.onFormSubmit}>
-            <div>
-              <label>Email</label>
-              <input type="text" name="email" onChange={this.onInputTypesChange}></input>
-            </div>
-            <div>
-              <label>Password</label>
-              <input type="password" name="password" onChange={this.onInputTypesChange}></input>
-            </div>
-            <button type="submit">submit</button>
-          </form>
+          <Button variant="primary" onClick={this.handleShow}>
+            Login
+          </Button>
+          <Modal show={this.state.show} onHide={this.handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>Login</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <Form>
+                <Form.Group controlId="formEmail">
+                  <Form.Label>Email address</Form.Label>
+                  <Form.Control type="email" name="email" placeholder="Enter email" onChange={this.onInputTypesChange}/>
+                </Form.Group>
+                <Form.Group controlId="formPassword">
+                  <Form.Label>Password</Form.Label>
+                  <Form.Control name="password" name="password" type="password" placeholder="Password" onChange={this.onInputTypesChange}/>
+                </Form.Group>
+              </Form>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="primary" onClick={this.onFormSubmit}>
+                Submit
+              </Button>
+            </Modal.Footer>
+          </Modal>
         </div>
       )
     }
