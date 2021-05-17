@@ -1,9 +1,15 @@
 import LoginContainer from "./user-container/login-container";
+import MenuContainer from "./menu-container/menu-container";
+import GalleryConainter from "./gallery-container/gallery-container";
+
 import "./App.css";
 
 function App() {
   return (
-    <LoginContainer/>
+    <div>
+      <MenuContainer/>
+      <GalleryConainter/>
+    </div>
   );
 }
 
