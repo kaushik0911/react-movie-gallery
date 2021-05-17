@@ -4,7 +4,7 @@ import {Badge, Card} from 'react-bootstrap';
 class MovieContainer extends Component {
   render() {
     return (
-      <div style={{padding: '10px 5px'}}>
+      <div style={{padding: '10px 5px 0px'}}>
         <Card>
           <Card.Img variant="top" src="holder.js/100px180" />
           <Card.Body>
