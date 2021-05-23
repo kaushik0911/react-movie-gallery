@@ -1,16 +1,42 @@
 import React, { Component } from "react";
-import {Container, Row, Col} from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import MovieContainer from '../movie-container/movie-container';
+import { getMovies } from './movies-apis-handler';
 
 class GalleryConainter extends Component {
+  constructor (props) {
+    super (props);
+
+    this.state = {
+      movies: []
+    };
+
+    this.loadMovies = this.loadMovies.bind(this);
+  }
+
+  async componentDidMount() {
+    await this.loadMovies();
+  }
+
+  loadMovies = async() => {
+    try {
+      let response = await getMovies();
+      if (response.status){
+        this.setState({ movies: response.data }); 
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   render() {
     return (
       <div>
         <Container>
           <Row xs={2} md={3} lg={4}>
-            {[...Array(15)].map((x, i) =>
+            {this.state.movies.map((movie, i) =>
               <Col key={i} className="nopadding">
-                <MovieContainer/>
+                <MovieContainer title={movie.title} synopsis={movie.synopsis} />
               </Col>
             )}
           </Row>

@@ -1,12 +1,10 @@
-import React, { Component, useEffect } from 'react';
+import React, { Component } from 'react';
 import { Button, Form, Modal } from 'react-bootstrap';
 import { login } from './session-apis';
 
-class LoginContainer extends Component {
+class SessionContainer extends Component {
   constructor (props) {
     super (props);
-
-    console.log(props);
 
     this.state = {
       email: '',
@@ -29,11 +27,15 @@ class LoginContainer extends Component {
     let email    = this.state.email;
     let password = this.state.password;
 
-    login(email, password).then( response => {
-      if(response) {
-        this.setState({logged: true});
+    login(email, password)
+    .then(function (success) {
+      if(success) {
+        this.setState({logged: true, show: false});
       }
-    });
+    })
+    .catch(function (error) {
+      return true;
+    });;
   }
   
   handleClose = () => {
@@ -41,11 +43,6 @@ class LoginContainer extends Component {
   };
 
   render () {
-    useEffect (() => {
-      const open = this.props.open;
-      this.setState({show: open});
-    });
-
     return (
       <div>
         <Modal show={this.state.show} onHide={this.handleClose}>
@@ -75,4 +72,4 @@ class LoginContainer extends Component {
   }
 }
 
-export default LoginContainer;
+export default SessionContainer;

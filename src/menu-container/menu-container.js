@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Form, FormControl, Navbar, Nav} from 'react-bootstrap';
-import LoginContainer from '../user-container/login-container';
+import SessionContainer from '../session-container/login-container';
 
 class MenuContainer extends Component {
   constructor (props) {
@@ -32,7 +32,7 @@ class MenuContainer extends Component {
             <Nav.Link href="#signup">Signup</Nav.Link>
           </Nav>
         </Navbar>
-        <LoginContainer show={this.state.loginPopup}/>
+        <SessionContainer show={this.state.loginPopup}/>
       </div>
     )
   }
