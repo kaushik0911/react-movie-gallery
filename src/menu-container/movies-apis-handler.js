@@ -1,8 +1,8 @@
-import { getMoviesApi } from "../apis/movies-apis";
+import { searchMoviesApi } from "../apis/movies-apis";
 
-export async function getMovies() {
+export async function searchMovies(title) {
   try {
-    var response = await getMoviesApi();
+    var response = await searchMoviesApi(title);
     if (response.data.data.length > 0)
       return { status: true, data: response.data.data };
 

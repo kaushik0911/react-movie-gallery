@@ -11,6 +11,8 @@ class MenuContainer extends Component {
     };
   }
 
+  
+
   loginShow = () => {
     this.setState({loginPopup: true});
   };

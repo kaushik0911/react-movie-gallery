@@ -36,7 +36,7 @@ class GalleryConainter extends Component {
           <Row xs={2} md={3} lg={4}>
             {this.state.movies.map((movie, i) =>
               <Col key={i} className="nopadding">
-                <MovieContainer title={movie.title} synopsis={movie.synopsis} />
+                <MovieContainer title={movie.title} synopsis={movie.synopsis} imageUrl={movie.poster}/>
               </Col>
             )}
           </Row>

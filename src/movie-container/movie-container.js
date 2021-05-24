@@ -5,8 +5,8 @@ class MovieContainer extends Component {
   render() {
     return (
       <div style={{padding: '10px 5px 0px'}}>
-        <Card>
-          <Card.Img variant="top" src="holder.js/100px180" />
+        <Card style={{width: "273px"}}>
+          <Card.Img variant="top" src={this.props.imageUrl} />
           <Card.Body>
             <Card.Title>{this.props.title}</Card.Title>
             {/* <Card.Subtitle className="mb-2 text-muted">{this.props.title}</Card.Subtitle> */}
