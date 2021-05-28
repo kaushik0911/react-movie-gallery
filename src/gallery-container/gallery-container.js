@@ -10,11 +10,6 @@ const mapToStateProps = state => {
 class GalleryConainter extends Component {
   constructor (props) {
     super (props);
-
-    this.state = {
-      movieList: []
-    };
-
     // this.loadMovies = this.loadMovies.bind(this);
   }
 
@@ -40,7 +35,7 @@ class GalleryConainter extends Component {
       <div>
         <Container>
           <Row xs={2} md={3} lg={4}>
-            {this.state.movieList.map((movie, i) =>
+            {this.props.movieList.map((movie, i) =>
               <Col key={i} className="nopadding">
                 <MovieContainer title={movie.title} synopsis={movie.synopsis} imageUrl={movie.poster}/>
               </Col>

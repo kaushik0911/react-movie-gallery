@@ -1,4 +1,4 @@
-import { REFRESH_MOVIE_LIST } from "../actions/action-type";
+import { REFRESH_MOVIE_LIST } from "../actions/action-types";
 
 const initialState = {
   movieList: [
@@ -7,7 +7,7 @@ const initialState = {
       title: "genre",
       synopsis: 0,
       poster: "https://picsum.photos/200"
-    },
+    }
   ]
 };
 
