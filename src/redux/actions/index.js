@@ -1,8 +1,8 @@
-import { REFRESH_MOVIE_LIST } from './action-type';
+import { REFRESH_MOVIE_LIST } from './action-types';
 import { getMovies } from '../../apis/api-handlers/movies-apis-handler';
 
 export function refreshMovieList () {
-  return (dispatch) => {
+  return async (dispatch) => {
     try {
       let response = await getMovies();
       if (response.status){

@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
-import {Form, FormControl, Navbar, Nav} from 'react-bootstrap';
+import { connect } from "react-redux";
+import { Form, FormControl, Navbar, Nav } from 'react-bootstrap';
 import SessionContainer from '../session-container/login-container';
+import { refreshMovieList } from '../redux/actions/index';
+
+const mapDispatchToProps = dispatch => {
+  return {
+    refreshMovieList: () => dispatch(refreshMovieList())
+  }
+}
 
 class MenuContainer extends Component {
   constructor (props) {
@@ -9,9 +17,13 @@ class MenuContainer extends Component {
     this.state = {
       loginPopup: false
     };
+
+    this.getTrending = this.getTrending.bind(this);
   }
 
-  
+  getTrending = () => {
+    this.props.refreshMovieList();
+  }
 
   loginShow = () => {
     this.setState({loginPopup: true});
@@ -23,7 +35,7 @@ class MenuContainer extends Component {
         <Navbar bg="dark" variant="dark">
           <Navbar.Brand href="#home">Movie Gallery</Navbar.Brand>
           <Nav className="mr-auto">
-            <Nav.Link href="#trending">Trending</Nav.Link>
+            <Nav.Link onClick={this.getTrending}>Trending</Nav.Link>
             <Nav.Link href="#about">About</Nav.Link>
           </Nav>
           <Form className="d-flex justify-content-center" inline>
@@ -40,4 +52,4 @@ class MenuContainer extends Component {
   }
 }
 
-export default MenuContainer;
+export default connect(null, mapDispatchToProps)(MenuContainer);

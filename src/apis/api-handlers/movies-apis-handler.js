@@ -1,4 +1,4 @@
-import { getMoviesApi } from "../movies-apis";
+import { getMoviesApi, searchMoviesApi } from "../movies-apis";
 
 export async function getMovies() {
   try {
