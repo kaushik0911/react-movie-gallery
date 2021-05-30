@@ -2,23 +2,30 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Container, Row, Col } from 'react-bootstrap';
 import MovieContainer from '../movie-container/movie-container';
+import { getMovies } from '../apis/api-handlers/movies-apis-handler';
+import { refreshMovieList } from '../redux/actions/index';
 
 const mapToStateProps = state => {
   return { movieList: state.refreshMovieListReducer.movieList }
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    refreshMovieList: () => dispatch(refreshMovieList())
+  }
+}
+
 class GalleryConainter extends Component {
   constructor (props) {
     super (props);
-    // this.loadMovies = this.loadMovies.bind(this);
+    this.loadMovies = this.loadMovies.bind(this);
   }
 
   async componentDidMount() {
-    // await this.loadMovies();
+    this.props.refreshMovieList();
   }
 
   loadMovies = async() => {
-    /*
     try {
       let response = await getMovies();
       if (response.status){
@@ -27,7 +34,6 @@ class GalleryConainter extends Component {
     } catch (e) {
       console.log(e);
     }
-    */
   }
 
   render() {
@@ -47,4 +53,4 @@ class GalleryConainter extends Component {
   }
 }
 
-export default connect(mapToStateProps)(GalleryConainter);
+export default connect(mapToStateProps, mapDispatchToProps)(GalleryConainter);

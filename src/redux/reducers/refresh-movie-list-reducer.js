@@ -1,21 +1,14 @@
 import { REFRESH_MOVIE_LIST } from "../actions/action-types";
 
 const initialState = {
-  movieList: [
-    {
-      id: "title",
-      title: "genre",
-      synopsis: 0,
-      poster: "https://picsum.photos/200"
-    }
-  ]
+  movieList: []
 };
 
 function refreshMovieListReducer(state = initialState, action) {
   switch (action.type) {
     case REFRESH_MOVIE_LIST:
       return Object.assign({}, state, {
-        movieList: state.movieList.concat(action.payload)
+        movieList: action.payload
       });
     default:
       return state;
