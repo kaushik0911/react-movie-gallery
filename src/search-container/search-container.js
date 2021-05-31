@@ -24,23 +24,26 @@ class SearchContainer extends Component {
     });
 
     if (this.state.search.length > 0) {
-      let title = this.state.search.toLowerCase();
+      var title = this.removeSpaces(this.state.search);
+
       this.setState ({
         results: this.props.movieList.filter ( (movie) =>
-          { movie.title.toLowerCase().includes(title) }
+          this.removeSpaces(movie.title).includes(title)
         )
       });
     }
-
-    console.log(this.state.results)
   }
 
   render () {
     return (
       <Form className="d-flex justify-content-center" inline>
-        <FormControl onChange={this.enterMovieTitle} type="text" placeholder="Search Movie Title" className="mr-sm-2" />
+        <FormControl onKeyUp={this.enterMovieTitle} type="text" placeholder="Search Movie Title" className="mr-sm-2" />
       </Form>
     )
+  }
+
+  removeSpaces = (string) => {
+    return string.replace(/\s/g, '').toLowerCase();
   }
 }
 
