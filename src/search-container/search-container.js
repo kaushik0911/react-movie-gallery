@@ -3,7 +3,13 @@ import { connect } from "react-redux";
 import { Form, FormControl} from 'react-bootstrap';
 
 const mapToStateProps = state => {
-  return { movieList: state.refreshMovieListReducer.movieList }
+  // return { movieList: state.refreshMovieListReducer.movieList }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    // refreshMovieList: () => dispatch(refreshMovieList())
+  }
 }
 
 class SearchContainer extends Component {
@@ -28,7 +34,7 @@ class SearchContainer extends Component {
 
       this.setState ({
         results: this.props.movieList.filter ( (movie) =>
-          this.removeSpaces(movie.title).includes(title)
+          (this.removeSpaces(movie.title)).includes(title)
         )
       });
     }
