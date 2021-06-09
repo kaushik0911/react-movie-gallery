@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Container, Row, Col } from 'react-bootstrap';
 import MovieContainer from '../movie-container/movie-container';
-import { getMovies } from '../apis/api-handlers/movies-apis-handler';
-import { refreshMovieList } from '../redux/actions/index';
+import { refreshMovieList } from '../redux/actions';
 
 const mapToStateProps = state => {
   return { movieList: state.refreshMovieListReducer.movieList }
@@ -11,29 +10,17 @@ const mapToStateProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    refreshMovieList: () => dispatch(refreshMovieList())
+    makeRefresh: () => dispatch(refreshMovieList())
   }
 }
 
 class GalleryConainter extends Component {
   constructor (props) {
     super (props);
-    this.loadMovies = this.loadMovies.bind(this);
   }
 
   async componentDidMount() {
-    this.props.refreshMovieList();
-  }
-
-  loadMovies = async() => {
-    try {
-      let response = await getMovies();
-      if (response.status){
-        this.setState({ movieList: response.data }); 
-      }
-    } catch (e) {
-      console.log(e);
-    }
+    this.props.makeRefresh();
   }
 
   render() {

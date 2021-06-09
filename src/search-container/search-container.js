@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Form, FormControl} from 'react-bootstrap';
 
 const mapToStateProps = state => {
-  // return { movieList: state.refreshMovieListReducer.movieList }
+  return { movieList: state.refreshMovieListReducer.movieList }
 }
 
 const mapDispatchToProps = dispatch => {
