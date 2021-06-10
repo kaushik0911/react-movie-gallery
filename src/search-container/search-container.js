@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { Form, FormControl} from 'react-bootstrap';
-
-const mapToStateProps = state => {
-  // return { movieList: state.refreshMovieListReducer.movieList }
-}
+import { seachMovie } from "../redux/actions";
 
 const mapDispatchToProps = dispatch => {
   return {
-    // refreshMovieList: () => dispatch(refreshMovieList())
+    findMovie: (title) => dispatch(seachMovie(title))
   }
 }
 
@@ -32,11 +29,14 @@ class SearchContainer extends Component {
     if (this.state.search.length > 0) {
       var title = this.removeSpaces(this.state.search);
 
-      this.setState ({
-        results: this.props.movieList.filter ( (movie) =>
-          (this.removeSpaces(movie.title)).includes(title)
-        )
-      });
+      this.props.findMovie(title);
+
+
+      // this.setState ({
+      //   results: this.props.movieList.filter ( (movie) =>
+      //     (this.removeSpaces(movie.title)).includes(title)
+      //   )
+      // });
     }
   }
 
@@ -53,4 +53,4 @@ class SearchContainer extends Component {
   }
 }
 
-export default connect(mapToStateProps)(SearchContainer);
+export default connect(null, mapDispatchToProps)(SearchContainer);
