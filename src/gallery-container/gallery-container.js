@@ -2,25 +2,14 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Container, Row, Col } from 'react-bootstrap';
 import MovieContainer from '../movie-container/movie-container';
-import { refreshMovieList } from '../redux/actions';
 
 const mapToStateProps = state => {
   return { movieList: state.refreshMovieListReducer.movieList }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    makeRefresh: () => dispatch(refreshMovieList())
-  }
-}
-
 class GalleryConainter extends Component {
   constructor (props) {
     super (props);
-  }
-
-  async componentDidMount() {
-    this.props.makeRefresh();
   }
 
   render() {
@@ -40,4 +29,4 @@ class GalleryConainter extends Component {
   }
 }
 
-export default connect(mapToStateProps, mapDispatchToProps)(GalleryConainter);
+export default connect(mapToStateProps)(GalleryConainter);

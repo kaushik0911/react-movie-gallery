@@ -57,7 +57,7 @@ class SessionContainer extends Component {
               </Form.Group>
               <Form.Group controlId="formPassword">
                 <Form.Label>Password</Form.Label>
-                <Form.Control name="password" name="password" type="password" placeholder="Password" onChange={this.onInputTypesChange}/>
+                <Form.Control name="password" type="password" placeholder="Password" onChange={this.onInputTypesChange}/>
               </Form.Group>
             </Form>
           </Modal.Body>
