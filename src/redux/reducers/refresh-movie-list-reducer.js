@@ -11,19 +11,27 @@ const refreshMovieListReducer = (state = initialState, action) => {
         movieList: action.payload.movies
       });
     case SEARCH_MOVIE:
-      let title  = action.payload.movie;
+      let searchTitle  = action.payload.movie;
       let movies = state.movieList;
-      
-      movies.filter ((movie) =>
-        (this.removeSpaces(movie.title)).includes(title)
-      )
+      let foundmatch = [];
 
-      return Object.assign({}, state, {
-        movieList: movies
+      for (let i=0; i < movies.length; i++){
+
+        if (movieTitle(movies[i]).match(searchTitle)){
+          foundmatch.push(movies[i]);
+        }
+      }
+
+      return Object.assign({}, {
+        movieList: foundmatch
       });
     default:
       return state;
   }
+}
+
+const movieTitle = (movie) => {
+  return movie.title.replace(/\s/g, '').toLowerCase();
 }
 
 export default refreshMovieListReducer;
