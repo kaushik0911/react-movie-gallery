@@ -5,5 +5,5 @@ export async function getMoviesApi () {
 }
 
 export async function searchMoviesApi (title) {
-  return apiInstance.post('/search', { title: title });
+  return apiInstance.get('/search', { params: {title: title} });
 }

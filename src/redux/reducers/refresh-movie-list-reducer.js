@@ -10,21 +10,6 @@ const refreshMovieListReducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         movieList: action.payload.movies
       });
-    case SEARCH_MOVIE:
-      let searchTitle  = action.payload.movie;
-      let movies = state.movieList;
-      let foundmatch = [];
-
-      for (let i=0; i < movies.length; i++){
-
-        if (movieTitle(movies[i]).match(searchTitle)){
-          foundmatch.push(movies[i]);
-        }
-      }
-
-      return Object.assign({}, {
-        movieList: foundmatch
-      });
     default:
       return state;
   }
