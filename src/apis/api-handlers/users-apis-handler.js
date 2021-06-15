@@ -1,14 +1,13 @@
 import { createUserApi } from "../user-apis";
+import { CREATED } from "../api";
 
 export async function userRegisteration(user) {
   try {
     var response = await createUserApi(user);
-    if (response.data.status == true)
-      return { 
-        status: response.data.status,
-        data: response.data.data,
-        message: response.data.message
-      };
-    return { status: false, data: {}, message: response.data.message };
+    console.log(response)
+    return {
+      status: response.status == CREATED,
+      data: response.data,
+    };
   } catch (e) { return e; }
 }
