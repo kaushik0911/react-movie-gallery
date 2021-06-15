@@ -40,14 +40,14 @@ class RegistrationContainer extends Component {
       <div>
         <Form onSubmit={this.onFormSubmit}>
           <Form.Group controlId="formBasicFullname">
-            <Form.Label>Fullname</Form.Label>
+            <Form.Label>Full Name</Form.Label>
             <Form.Control name="fullname" type="text" placeholder="Your name" onChange={this.onInputTypesChange} />
           </Form.Group>
 
           <Form.Group controlId="formBasicEmail">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control type="email" placeholder="Enter email" onChange={this.onInputTypesChange}/>
-            <Form.Text name="email" className="text-muted">
+            <Form.Label>Email Address</Form.Label>
+            <Form.Control name="email" type="email" placeholder="Enter email" onChange={this.onInputTypesChange}/>
+            <Form.Text className="text-muted">
               We'll never share your email with anyone else.
             </Form.Text>
           </Form.Group>
