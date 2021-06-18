@@ -30,7 +30,7 @@ class SessionContainer extends Component {
     login(email, password)
     .then(function (success) {
       if(success) {
-        this.setState({logged: true, show: false});
+        
       }
     })
     .catch(function (error) {
@@ -54,6 +54,7 @@ class SessionContainer extends Component {
               <Form.Group controlId="formEmail">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control type="email" name="email" placeholder="Enter email" onChange={this.onInputTypesChange}/>
+                
               </Form.Group>
               <Form.Group controlId="formPassword">
                 <Form.Label>Password</Form.Label>
